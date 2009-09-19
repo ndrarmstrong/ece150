@@ -1,0 +1,10 @@
+﻿<!-- ECE 150 Sample Application created Sept 2009 by Nicholas Armstrong. -->
+    
+<Application x:Class="NicholasArmstrong.Samples.ECE150.SimpleTypes.DesktopHost.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    StartupUri="Window1.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>

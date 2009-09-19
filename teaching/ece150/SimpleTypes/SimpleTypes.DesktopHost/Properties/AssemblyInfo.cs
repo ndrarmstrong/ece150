@@ -9,24 +9,21 @@
 
 using System.Reflection;
 using System.Resources;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using System.Security;
 using System.Windows;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ECE150.SimpleTypes")]
-[assembly: AssemblyDescription("ECE 150 Simple Types Demo Application")]
+[assembly: AssemblyTitle("ECE150.SimpleTypes.Desktop")]
+[assembly: AssemblyDescription("ECE 150 Simple Types Demo Application (Desktop Version)")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Nicholas Armstrong")]
-[assembly: AssemblyProduct("ECE150.SimpleTypes")]
+[assembly: AssemblyProduct("ECE150.SimpleTypes.Desktop")]
 [assembly: AssemblyCopyright("Copyright ©  2009 Nicholas Armstrong")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-
-// Allow calls from partial-trust XBAP:
-[assembly: AllowPartiallyTrustedCallers]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
@@ -51,6 +48,6 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.1.0.0")]
+[assembly: AssemblyFileVersion("1.1.0.0")]
 [assembly: NeutralResourcesLanguageAttribute("en-US")]

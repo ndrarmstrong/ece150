@@ -1,5 +1,4 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="AssemblyInfo.cs" company="Nicholas Armstrong">
+﻿// <copyright file="AssemblyInfo.cs" company="Nicholas Armstrong">
 //     Created Sept. 2009 by Nicholas Armstrong.  Available online at http://nicholasarmstrong.com
 // </copyright>
 // <summary>
@@ -16,16 +15,14 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ECE150.SimpleTypes")]
-[assembly: AssemblyDescription("ECE 150 Simple Types Demo Application")]
+[assembly: AssemblyTitle("ECE150.SimpleTypes.XBAP")]
+[assembly: AssemblyDescription("ECE 150 Simple Types Demo Application (XBAP hosted)")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Nicholas Armstrong")]
-[assembly: AssemblyProduct("ECE150.SimpleTypes")]
+[assembly: AssemblyProduct("ECE150.SimpleTypes.XBAP")]
 [assembly: AssemblyCopyright("Copyright ©  2009 Nicholas Armstrong")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-
-// Allow calls from partial-trust XBAP:
 [assembly: AllowPartiallyTrustedCallers]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -51,6 +48,6 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.1.0.0")]
+[assembly: AssemblyFileVersion("1.1.0.0")]
 [assembly: NeutralResourcesLanguageAttribute("en-US")]

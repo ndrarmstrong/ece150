@@ -1,9 +1,9 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="Window1.xaml.cs" company="Nicholas Armstrong">
+// <copyright file="DemoContentControl.xaml.cs" company="Nicholas Armstrong">
 //     Created Sept. 2009 by Nicholas Armstrong.  Available online at http://nicholasarmstrong.com
 // </copyright>
 // <summary>
-//     Simple types sample application main window.  Created for the Fall 2009 offering of ECE 150.
+//     Simple types sample application content.  Created for the Fall 2009 offering of ECE 150.
 // </summary>
 //-----------------------------------------------------------------------
 
@@ -13,13 +13,14 @@ namespace NicholasArmstrong.Samples.ECE150.SimpleTypes
     using System.Collections.Generic;
     using System.Text.RegularExpressions;
     using System.Windows;
+    using System.Windows.Controls;
     using System.Windows.Documents;
     using System.Windows.Media;
 
     /// <summary>
     /// ECE 150 Demo Main Window.
     /// </summary>
-    public partial class Window1 : Window
+    public partial class DemoContentControl : UserControl
     {
         #region Fields
         #region Dependency Properties
@@ -27,25 +28,25 @@ namespace NicholasArmstrong.Samples.ECE150.SimpleTypes
         /// DependencyProperty backing store for BasicTypesValue.
         /// </summary>
         public static readonly DependencyProperty BasicTypesValueProperty =
-            DependencyProperty.Register("BasicTypesValue", typeof(string), typeof(Window1), new UIPropertyMetadata(String.Empty, new PropertyChangedCallback(OnBasicTypesValueChanged)));
+            DependencyProperty.Register("BasicTypesValue", typeof(string), typeof(DemoContentControl), new UIPropertyMetadata(String.Empty, new PropertyChangedCallback(OnBasicTypesValueChanged)));
 
         /// <summary>
         /// DependencyProperty backing store for Types.
         /// </summary>
         public static readonly DependencyProperty TypesProperty =
-            DependencyProperty.Register("Types", typeof(List<string>), typeof(Window1), new UIPropertyMetadata(new List<string>()));
+            DependencyProperty.Register("Types", typeof(List<string>), typeof(DemoContentControl), new UIPropertyMetadata(new List<string>()));
 
         /// <summary>
         /// DependencyProperty backing store for FirstTypeValue.
         /// </summary>
         public static readonly DependencyProperty FirstTypeValueProperty =
-            DependencyProperty.Register("FirstTypeValue", typeof(string), typeof(Window1), new UIPropertyMetadata("int", new PropertyChangedCallback(OnTypeConversionValueChanged)));
+            DependencyProperty.Register("FirstTypeValue", typeof(string), typeof(DemoContentControl), new UIPropertyMetadata("int", new PropertyChangedCallback(OnTypeConversionValueChanged)));
 
         /// <summary>
         /// DependencyProperty backing store for SecondTypeValue.
         /// </summary>
         public static readonly DependencyProperty SecondTypeValueProperty =
-            DependencyProperty.Register("SecondTypeValue", typeof(string), typeof(Window1), new UIPropertyMetadata("long", new PropertyChangedCallback(OnTypeConversionValueChanged)));
+            DependencyProperty.Register("SecondTypeValue", typeof(string), typeof(DemoContentControl), new UIPropertyMetadata("long", new PropertyChangedCallback(OnTypeConversionValueChanged)));
         #endregion
 
         #region Regular Expressions
@@ -108,7 +109,7 @@ namespace NicholasArmstrong.Samples.ECE150.SimpleTypes
         {
             { "string", new List<string>() },
             { "bool", new List<string>() },
-            { "sbyte", new List<string>() { "short", "int", "float", "double", "decimal" } },
+            { "sbyte", new List<string>() { "short", "int", "long", "float", "double", "decimal" } },
             { "byte", new List<string>() { "short", "ushort", "int", "uint", "long", "ulong", "float", "double", "decimal" } },
             { "short", new List<string>() { "int", "long", "float", "double", "decimal" } },
             { "ushort", new List<string>() { "int", "uint", "long", "ulong", "float", "double", "decimal" } },
@@ -162,9 +163,9 @@ namespace NicholasArmstrong.Samples.ECE150.SimpleTypes
 
         #region Constructor
         /// <summary>
-        /// Initializes a new instance of the Window1 class.
+        /// Initializes a new instance of the DemoContentControl class.
         /// </summary>
-        public Window1()
+        public DemoContentControl()
         {
             InitializeComponent();
 
@@ -282,18 +283,6 @@ namespace NicholasArmstrong.Samples.ECE150.SimpleTypes
             get { return (string)GetValue(SecondTypeValueProperty); }
             set { SetValue(SecondTypeValueProperty, value); }
         }
-
-        /// <summary>
-        /// Gets the application version number.
-        /// </summary>
-        public string VersionNumber
-        {
-            get 
-            {
-                Version version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-                return String.Format("Version {0}.{1}", version.Major, version.Minor);
-            }
-        }
         #endregion
 
         #region Methods
@@ -304,7 +293,7 @@ namespace NicholasArmstrong.Samples.ECE150.SimpleTypes
         /// <param name="e">Arguments describing the event.</param>
         private static void OnBasicTypesValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            Window1 window = sender as Window1;
+            DemoContentControl window = sender as DemoContentControl;
             if (window != null)
             {
                 string newValue = window.BasicTypesValue.Trim();
@@ -432,7 +421,7 @@ namespace NicholasArmstrong.Samples.ECE150.SimpleTypes
         /// <param name="e">Arguments describing the event.</param>
         private static void OnTypeConversionValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
-            Window1 window = sender as Window1;
+            DemoContentControl window = sender as DemoContentControl;
             if (sender != null)
             {
                 window.UpdateTypeConversionText();
@@ -685,23 +674,6 @@ namespace NicholasArmstrong.Samples.ECE150.SimpleTypes
                 this.TypeConversionDetailsTextBlock.Inlines.Add(new Run("No direct procedure exists") { FontWeight = FontWeights.Bold });
                 this.TypeConversionDetailsTextBlock.Inlines.Add(new Run(". If this operation makes sense in your program, you'll have have to write your own function to perform this conversion."));
                 this.TypeConversionProgramTextBlock.Inlines.Add(new Run("no built-in conversion") { Foreground = new SolidColorBrush(Colors.Red) });
-            }
-        }
-
-        /// <summary>
-        /// Shows or hides the about screen.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">Arguments describing the event.</param>
-        private void AppTitle_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            if (this.AppAboutScreen.Visibility == Visibility.Collapsed)
-            {
-                this.AppAboutScreen.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                this.AppAboutScreen.Visibility = Visibility.Collapsed;
             }
         }
         #endregion

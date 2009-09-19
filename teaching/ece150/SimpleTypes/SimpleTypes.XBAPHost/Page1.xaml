@@ -1,0 +1,90 @@
+﻿<!-- XBAP Application for Simple Types sample application.  Created Sept 2009 by Nicholas Armstrong. -->
+
+<Page x:Class="NicholasArmstrong.Samples.ECE150.SimpleTypes.XBAPHost.Page1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:NicholasArmstrong.Samples.ECE150.SimpleTypes.XBAPHost"
+    xmlns:content="clr-namespace:NicholasArmstrong.Samples.ECE150.SimpleTypes;assembly=ECE150.SimpleTypes"
+    Title="{Binding RelativeSource={RelativeSource Self}, Path=TitleString}" ShowsNavigationUI="False">
+    <Page.Resources>
+        <SolidColorBrush x:Key="ECE150DarkBlue" Color="#385dc9"/>
+        <SolidColorBrush x:Key="ECE150LightBlue" Color="#a7bdfe"/>
+
+        <Style x:Key="AppText" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="LayoutTransform">
+                <Setter.Value>
+                    <RotateTransform Angle="-90"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="StandardText" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="0,0,0,6"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+
+        <Style x:Key="LabelText" TargetType="TextBlock" BasedOn="{StaticResource StandardText}">
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="#BBBBBB"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60"/>
+            <ColumnDefinition Width="60"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Background="{StaticResource ECE150DarkBlue}" MouseLeftButtonUp="AppTitle_MouseLeftButtonUp" Cursor="Hand" ToolTip="Click for information about this application">
+            <TextBlock Text="ECE 150 Demo Application" Style="{StaticResource AppText}" FontSize="30" Foreground="White" />
+        </Border>
+        <Border Background="{StaticResource ECE150LightBlue}" Grid.Column="1" MouseLeftButtonUp="AppTitle_MouseLeftButtonUp" Cursor="Hand" ToolTip="Click for information about this application">
+            <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Page1}}, Path=AppShortName}" Style="{StaticResource AppText}" FontSize="24" FontWeight="Bold"/>
+        </Border>
+
+        <content:DemoContentControl Grid.Column="2"/>
+
+        <Grid x:Name="AppAboutScreen" Background="#CC000000" Grid.ColumnSpan="3" Panel.ZIndex="100" MouseLeftButtonUp="AppTitle_MouseLeftButtonUp" Visibility="Collapsed">
+            <Border Background="#f6f6f6" Width="525" Height="230" CornerRadius="20" Cursor="Hand">
+                <Grid Margin="18,18,18,5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Image Source="DemoApp.ico" Height="30" Margin="0,0,15,0"/>
+                        <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Page1}}, Path=AppLongName}" Style="{StaticResource LabelText}" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                    <TextBlock Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Page1}}, Path=VersionNumber}" Grid.Row="1" Style="{StaticResource StandardText}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,2,0,8" FontSize="12"/>
+                    <FlowDocumentScrollViewer VerticalScrollBarVisibility="Disabled" Grid.Row="2" IsHitTestVisible="False" Margin="0,10,0,0">
+                        <FlowDocument PagePadding="0">
+                            <Paragraph Margin="0,6">
+                                <Run>Designed and built in September 2009 by </Run>
+                                <Bold>Nicholas Armstrong</Bold>
+                            </Paragraph>
+                            <Paragraph Margin="0,6">
+                                <Run>This application was built using C# with a Windows Presentation Foundation (WPF) user interface written with XAML.</Run>
+                            </Paragraph>
+                            <Paragraph Margin="0,6">
+                                <Run>Demos at </Run>
+                                <Underline>http://nicholasarmstrong.com/projects/teaching/ece150/</Underline>
+                            </Paragraph>
+                        </FlowDocument>
+                    </FlowDocumentScrollViewer>
+                    <TextBlock Text="click to close" Grid.Row="3" Style="{StaticResource LabelText}" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,2" FontSize="12"/>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Page>
