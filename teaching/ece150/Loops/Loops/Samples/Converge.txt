@@ -1,0 +1,9 @@
+﻿// Sample: Converge
+// Converges to the middle from both ends
+
+for (int i = 0, j = totalBoxes; i < totalBoxes / 2 || j >= totalBoxes / 2; i++, j--)
+{
+	Highlight(i);
+	Highlight(j);
+	Wait(50);
+}

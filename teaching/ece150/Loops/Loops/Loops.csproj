@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2A4E9C13-FDC0-4CB8-BB38-3E885095EF5F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NicholasArmstrong.Samples.ECE150.Loops</RootNamespace>
+    <AssemblyName>ECE150.Loops</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>../../SampleKey.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.AvalonEdit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=9cc39be672370310, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\ICSharpCode.AvalonEdit.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DemoContentControl.xaml.cs">
+      <DependentUpon>DemoContentControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DynamicEval.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Box.cs" />
+    <Compile Include="BoxGrid.cs" />
+    <Compile Include="Utilities.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="DemoContentControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Samples\HowTo.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Samples\DoWhile.txt" />
+    <EmbeddedResource Include="Samples\DoWhileFalse.txt" />
+    <EmbeddedResource Include="Samples\Fibonacci.txt" />
+    <EmbeddedResource Include="Samples\ForEach.txt" />
+    <EmbeddedResource Include="Samples\ForLoop.txt" />
+    <EmbeddedResource Include="Samples\NestedForLoop.txt" />
+    <EmbeddedResource Include="Samples\PowersOfTwo.txt" />
+    <EmbeddedResource Include="Samples\WhileLoop.txt" />
+    <EmbeddedResource Include="Samples\WhileTrue.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Samples\Conditional.txt" />
+    <EmbeddedResource Include="Samples\ForLoopReverse.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Samples\MultiplesOfTwo.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Samples\Converge.txt" />
+    <EmbeddedResource Include="Samples\SlowDown.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Samples\FivePlaces.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Samples\WhileFalse.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Samples\Custom.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

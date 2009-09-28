@@ -1,0 +1,14 @@
+﻿// Sample: do while(false) Loop
+// Highlights the first box even though
+// the while condition is always false
+
+int count = 0;
+
+do
+{
+	// This code is executed once
+	Highlight(count);
+	Wait(50);
+	count++;
+}
+while (false);

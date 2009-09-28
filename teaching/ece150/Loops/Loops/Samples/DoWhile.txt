@@ -1,0 +1,13 @@
+﻿// Sample: do while Loop
+// Highlights all boxes by row
+// using a do while loop
+
+int count = 0;
+
+do
+{
+	Highlight(count);
+	Wait(50);
+	count++;
+}
+while (count < totalBoxes);

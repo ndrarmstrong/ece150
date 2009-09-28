@@ -1,0 +1,16 @@
+﻿// Sample: while(true) Loop
+// Highlights half of the boxes by row
+// using a while(true) loop
+
+int count = 0;
+while (true)
+{
+	Highlight(count);
+	Wait(50);
+	count++;
+	
+	if (count > totalBoxes / 2)
+	{
+		break;	// Prevent infinite iteration
+	}
+}

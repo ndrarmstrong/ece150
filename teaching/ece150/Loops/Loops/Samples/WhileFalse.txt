@@ -1,0 +1,12 @@
+﻿// Sample: while(false) Loop
+// Highlights no boxes
+// using a while(false) loop
+
+int count = 0;
+while (false)
+{
+	// This code is never executed
+	Highlight(count);
+	Wait(50);
+	count++;
+}

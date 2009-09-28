@@ -1,0 +1,8 @@
+﻿// Sample: Powers of Two
+// Highlights all powers of two
+
+for (int i = 2; i < totalBoxes; i *= 2)
+{
+	Highlight(i);
+	Wait(50);
+}

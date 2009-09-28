@@ -1,0 +1,143 @@
+﻿<!-- User Interface for Loops sample application.  Created Sept 2009 by Nicholas Armstrong. -->
+
+<UserControl x:Class="NicholasArmstrong.Samples.ECE150.Loops.DemoContentControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:AvalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
+    xmlns:local="clr-namespace:NicholasArmstrong.Samples.ECE150.Loops">
+    <!-- Control Resources -->
+    <UserControl.Resources>
+        <Style x:Key="HeaderText" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Margin" Value="0,10,0,8"/>
+        </Style>
+
+        <Style x:Key="StandardText" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+
+        <Style x:Key="LabelText" TargetType="TextBlock" BasedOn="{StaticResource StandardText}">
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="#BBBBBB"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+
+        <Style x:Key="ProgramText" TargetType="TextBlock" BasedOn="{StaticResource StandardText}">
+            <Setter Property="FontFamily" Value="Consolas, Courier New, Courier, Monospace"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+
+        <Style TargetType="{x:Type local:Box}">
+            <Setter Property="Foreground" Value="#CCCCCC"/>
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type local:Box}">
+                        <Grid>
+                            <Rectangle x:Name="Box" Fill="{TemplateBinding Foreground}" Height="6" Width="6" Margin="3"/>
+                            <Rectangle x:Name="NumberBg" Fill="White" Width="4" Height="4" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed"/>
+                            <Rectangle x:Name="NumberHitTest" Fill="Transparent" Width="3" Height="3" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed"/>
+                            <TextBlock x:Name="NumberText" Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Number}" FontSize="2" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Visibility" Value="Visible" TargetName="NumberBg"/>
+                                <Setter Property="Visibility" Value="Visible" TargetName="NumberText"/>
+                                <Setter Property="Visibility" Value="Visible" TargetName="NumberHitTest"/>
+                                <Setter Property="IsHitTestVisible" Value="False" TargetName="Box"/>
+                                <Setter Property="IsHitTestVisible" Value="False" TargetName="NumberBg"/>
+                                <Setter Property="Panel.ZIndex" Value="10"/>
+                                <Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="6" ScaleY="6"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="Highlighted" Value="True">
+                    <Setter Property="Foreground" Value="{Binding RelativeSource={RelativeSource Self}, Path=HighlightColor}"/>
+                </Trigger>
+
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="EditorStyle"  TargetType="{x:Type AvalonEdit:TextEditor}">
+            <Setter Property="FontFamily" Value="Consolas, Courier New, Courier, Monospace"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="20,0,0,0"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type AvalonEdit:TextEditor}">
+                        <ScrollViewer
+						Focusable="False"
+						Name="PART_ScrollViewer"
+						CanContentScroll="True"
+						VerticalScrollBarVisibility="Auto"
+						HorizontalScrollBarVisibility="Auto"
+						Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TextArea}"
+						VerticalContentAlignment="Top"
+						HorizontalContentAlignment="Left"
+						Background="{TemplateBinding Background}"
+						Padding="{TemplateBinding Padding}"
+					/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid Margin="20,10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*" MinWidth="400"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock x:Name="PreEditorTextBlock" Style="{StaticResource ProgramText}"/>
+            <Border BorderBrush="#CCCCCC" BorderThickness="1,0,0,0" Margin="20,0,0,0" Grid.Row="1">
+                <ContentControl x:Name="TextEditorArea"/>      
+            </Border>
+            <TextBlock x:Name="PostEditorTextBlock" Grid.Row="2" Style="{StaticResource ProgramText}"/>
+            
+            
+            <Grid Grid.Row="3" Margin="0,5" HorizontalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="250"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Sample: " VerticalAlignment="Center" Margin="0,0,5,0" Style="{StaticResource StandardText}" FontSize="14"/>
+                <ComboBox ItemsSource="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:DemoContentControl}}, Path=Samples.Keys}" Grid.Column="1" VerticalAlignment="Center" SelectedItem="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:DemoContentControl}}, Path=SelectedSample, Mode=TwoWay}" FontSize="14"/>
+            </Grid>
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Button x:Name="ExecuteButton" Click="ExecuteButton_Click" Margin="0,5,10,5" Padding="5,2"  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold">Execute Code</Button>
+                <TextBlock x:Name="StatusText" Style="{StaticResource StandardText}" TextTrimming="WordEllipsis" Grid.Column="1" VerticalAlignment="Center" MaxHeight="30"/>
+            </Grid>
+        </Grid>
+
+        <ContentControl x:Name="BoxesGridArea" Grid.Column="2"/>
+    </Grid>
+</UserControl>

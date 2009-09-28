@@ -1,0 +1,21 @@
+﻿// Sample: Conditional
+// Highlights multiples of 2 in green, and
+// multiples of 10 in orange
+
+for (int i = 0; i < totalBoxes; i++)
+{
+	if (i % 10 == 0)
+	{
+		Highlight(i, "Orange");
+	}
+	else if (i % 2 == 0)
+	{
+		Highlight(i, "DarkGreen");
+	}
+	else 
+	{
+		Highlight(i);
+	}
+	
+	Wait(50);
+}

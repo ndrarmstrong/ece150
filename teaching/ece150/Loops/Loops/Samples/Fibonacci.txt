@@ -1,0 +1,16 @@
+﻿// Sample: Fibonacci Numbers
+// Highlights all fibonacci numbers
+
+int a = 0;
+int b = 1;
+
+do
+{
+	Highlight(b);
+	Wait(50);
+	
+	int next = a + b;
+	a = b;
+	b = next;
+}
+while (b < totalBoxes);

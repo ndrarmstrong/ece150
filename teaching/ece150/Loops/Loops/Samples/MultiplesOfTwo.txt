@@ -1,0 +1,8 @@
+﻿// Sample: Multiples of Two
+// Highlights all multiples of two
+
+for (int i = 2; i < totalBoxes; i += 2)
+{
+	Highlight(i);
+	Wait(50);
+}

@@ -1,0 +1,9 @@
+﻿// Sample: for Loop
+// Highlights all boxes by row
+// using a for loop
+
+for (int i = 0; i < totalBoxes; i++)
+{
+	Highlight(i);
+	Wait(50);
+}

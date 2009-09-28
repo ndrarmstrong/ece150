@@ -1,0 +1,24 @@
+﻿// Sample: Five Places
+// Highlights all boxes starting from
+// five different places
+
+int startingPlace = totalBoxes / 5;
+for (int i = 0; i < startingPlace; i++)
+{
+	Highlight(i);
+	Highlight(i + startingPlace);
+	Highlight(i + 2 * startingPlace);
+	Highlight(i + 3 * startingPlace);
+	Highlight(i + 4 * startingPlace);
+	Wait(100);
+}
+
+// Don't forget the last few
+if (totalBoxes % 5 != 0)
+{
+	for(int i = totalBoxes - (totalBoxes % 5); i < totalBoxes; i++)
+	{
+		Highlight(i);
+		Wait(100);
+	}
+}

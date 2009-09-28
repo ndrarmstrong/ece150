@@ -1,0 +1,15 @@
+﻿// Sample: Custom
+
+
+// Type your own program!
+
+
+// Methods and Variables available:
+// Highlight(int);
+// Highlight(int, string);
+// Wait(int);
+// int totalBoxes;
+// int totalRows;
+// int totalColumns;
+// int boxesPerRow;
+// int boxesPerColumn;

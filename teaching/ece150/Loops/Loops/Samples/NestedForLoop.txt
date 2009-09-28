@@ -1,0 +1,11 @@
+﻿// Sample: Nested for Loop
+// Highlights all boxes by column
+
+for (int i = 0; i < totalColumns; i++)
+{
+	for (int j = 0; j < totalRows; j++)
+	{
+		Highlight(i + j * boxesPerRow);
+		Wait(50);
+	}
+}

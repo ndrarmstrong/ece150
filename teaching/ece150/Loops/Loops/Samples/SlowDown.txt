@@ -1,0 +1,8 @@
+﻿// Sample: Slow Down
+// Slows down as it highlights more boxes
+
+for (int i = 0; i < totalBoxes; i++)
+{
+	Highlight(i);
+	Wait(2 * i);
+}

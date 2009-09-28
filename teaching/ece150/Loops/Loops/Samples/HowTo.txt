@@ -1,0 +1,23 @@
+﻿// Sample: How To
+// Type a function here (or choose a sample) to
+// highlight the boxes on the right of the 
+// screen, then click 'Execute' to run.
+
+// Call Highlight(int) to highlight a box
+// Call Wait(int) to pause
+// Variables available:
+//		int totalBoxes
+//		int totalRows
+//		int totalColumns
+//		int boxesPerRow
+//		int boxesPerColumn
+
+// Highlights box 4
+Highlight(4);
+
+// Waits 1000 ms (1 sec)
+Wait (1000);
+
+// Highlights box 18 in red
+Highlight(18, "Red");
+

@@ -1,0 +1,10 @@
+﻿// Sample: foreach Loop
+// foreach loops are not covered until
+// later in the course, so you don't 
+// need to know how/why this works yet
+
+foreach (Box box in boxes)
+{
+	HighlightBox(box);
+	Wait(50);
+}
